@@ -96,8 +96,19 @@ toString(){
             " State: " + this.state + " Zip: " + this.zip + " PhoneNO: " + this.phoneNo + " Email: " + this.email;
 }
 }
-   let contacts = new Contact("Bala", "Chandar" ,"Rtcch","Machilipatanamo","Andhrapradesh","500211","91 9493750386",    "bala123@gamil.com");
-    console.log(contacts.toString());
+//    let contacts = new Contact("Bala", "Chandar" ,"Rtcch","Machilipatanamo","Andhrapradesh","500211","91 9493750386",    "bala123@gamil.com");
+//     console.log(contacts.toString());
 
+let contact1 = new Contact("Bala", "Chandar", "Colony", "Machilipatanamo", "Andhrapradesh", "524894", "91 8596486541", "bala123@gmail.com")
+let contact2 = new Contact("Dinesh", "Kumar", "HitechCity", "Hyderabad", "Telangana", "542004", "91 9812287593", "dinesh9@gmail.com")
+let contact3 = new Contact("Pandu", "Rangarao", "Thane", "Mumbai", "Mumbai", "561004", "91 9854280202", "pandui11@gmail.com")
 
+var contactArray = new Array()
+contactArray.push(contact1)
+contactArray.push(contact2)
+contactArray.push(contact3)    
+
+for(let i = 0; i < contactArray.length; i++){
+    console.log(contactArray[i].toString())
+}
 
