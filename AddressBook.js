@@ -111,4 +111,9 @@ contactArray.push(contact3)
 for(let i = 0; i < contactArray.length; i++){
     console.log(contactArray[i].toString())
 }
-
+//uc4
+let index = contactArray.findIndex(Contact => Contact.firstName == "Dinesh");
+console.log("\n contact found to edit"+index);
+contactArray[index].city="Bandar";
+console.log("\n after editing the contact");
+contactArray.forEach((contact) => console.log(contact.toString()));
