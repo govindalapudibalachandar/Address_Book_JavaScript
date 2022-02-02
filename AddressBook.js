@@ -123,6 +123,15 @@ function CountContact(){
     let addressBookCount = AddressBook.reduce((count) => count= count + 1, 0);
     console.log("Contact Count is: " + addressBookCount);
 }
+// UC8 Search by city and state
+function SearchByCity(city) {
+    let sortByCity = AddressBook.filter(contact => contact.city == city);
+    return sortByCity;
+}
+function SearchByState(state) {
+    let sortByState = AddressBook.filter(contact => contact.state == state);
+    return sortByState;
+}
 
 function Main() {
 
@@ -167,6 +176,12 @@ function Main() {
   
   DeleteContact("Bala", "Chandar");
   AddressBook.forEach(contact=>console.log(contact.toString()));
+
+  // UC8 Prints Contact by city.
+  console.log(SearchByCity("Mumbai"));
+  // UC8 Prints Contact by state.
+  console.log(SearchByState("Telangana"));
+
 }
 Main();
 CountContact();
