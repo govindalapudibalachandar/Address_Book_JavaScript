@@ -112,6 +112,11 @@ function DeleteContact(firstName, lastName)
         }
     }
 }
+//uc6
+function CountContact(){
+    let addressBookCount = AddressBook.reduce((count) => count= count + 1, 0);
+    console.log("Contact Count is: " + addressBookCount);
+}
 
 function Main() {
 
@@ -158,3 +163,4 @@ function Main() {
   AddressBook.forEach(contact=>console.log(contact.toString()));
 }
 Main();
+CountContact();
