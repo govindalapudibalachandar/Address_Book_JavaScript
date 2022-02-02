@@ -1,25 +1,18 @@
 
 class Contact
 {
-    // firstName;
-    // lastName;
-    // address;
-    // city;
-    // state;
-    // zip;
-    // phoneNo;
-    // email;
+    
 
-    constructor(...params){
+    constructor(...params) {
         this.firstName = params[0];
         this.lastName = params[1];
         this.address = params[2];
         this.city = params[3];
         this.state = params[4];
         this.zip = params[5];
-        this.phoneNo = params[6];
+        this.phoneNumber = params[6];
         this.email = params[7];
-
+      
 }
 get firstName(){ 
     return this._firstName
@@ -75,11 +68,11 @@ set zip(zip){
         this._zip = zip
     else throw "Incorrect Zip"
 }
-get phoneNo(){ return this._phoneNo}
-set phoneNo(phoneNo){
+get phoneNunber(){ return this._phoneNo}
+set phoneNumber(phoneNumber){
     let regex = RegExp("[0-9]{2}\\s[0-9]{10}");
-    if(regex.test(phoneNo))
-        this._phoneNo = phoneNo
+    if(regex.test(phoneNumber))
+        this._phoneNo = phoneNumber
     else throw "Incorrect Phone Number"
 }
 get email(){ return this._email}
@@ -92,28 +85,76 @@ set email(email){
 
 
 toString(){
-    return "FirstName: " + this.firstName + " LastName: " + this.lastName + " Address: " + this.address + " City: " + this.city +
-            " State: " + this.state + " Zip: " + this.zip + " PhoneNO: " + this.phoneNo + " Email: " + this.email;
+    return ("FirstName: " + this.firstName + " LastName: " + this.lastName + " Address: " + this.address + " City: " + this.city +
+            " State: " + this.state + " Zip: " + this.zip + " PhoneNumber: " + this.phoneNumber + " Email: " + this.email);
 }
 }
-//    let contacts = new Contact("Bala", "Chandar" ,"Rtcch","Machilipatanamo","Andhrapradesh","500211","91 9493750386",    "bala123@gamil.com");
-//     console.log(contacts.toString());
 
-let contact1 = new Contact("Bala", "Chandar", "Colony", "Machilipatanamo", "Andhrapradesh", "524894", "91 8596486541", "bala123@gmail.com")
-let contact2 = new Contact("Dinesh", "Kumar", "HitechCity", "Hyderabad", "Telangana", "542004", "91 9812287593", "dinesh9@gmail.com")
-let contact3 = new Contact("Pandu", "Rangarao", "Thane", "Mumbai", "Mumbai", "561004", "91 9854280202", "pandui11@gmail.com")
-
-var contactArray = new Array()
-contactArray.push(contact1)
-contactArray.push(contact2)
-contactArray.push(contact3)    
-
-for(let i = 0; i < contactArray.length; i++){
-    console.log(contactArray[i].toString())
+let AddressBook = new Array();
+//uc3
+function AddContact(firstName, lastName, address, city, state, zip, phoneNumber, email) {
+    try {
+        let newcontact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+        AddressBook.push(newcontact);
+    }
+    catch (e) {
+        console.error(e);
+    }
 }
-//uc4
-let index = contactArray.findIndex(Contact => Contact.firstName == "Dinesh");
-console.log("\n contact found to edit"+index);
-contactArray[index].city="Bandar";
-console.log("\n after editing the contact");
-contactArray.forEach((contact) => console.log(contact.toString()));
+// UC5 Delete Contact
+function DeleteContact(firstName, lastName)
+{
+    for(let index = 0; index < AddressBook.length; index++)
+    {
+        if(AddressBook[index].firstName == firstName && AddressBook[index].lastName == lastName)
+        {
+            AddressBook.splice(index, 1 );
+        }
+    }
+}
+
+function Main() {
+
+    AddContact(
+      "Bala",
+      "Chandar",
+      "Rtccc",
+      "Machilipatanamo",
+      "AndhraPradesh",
+      "524894",
+      "91 8596486541",
+      "bala123@gmail.com"
+    );
+    AddContact(
+      "Dinesh",
+      "Kumar",
+      "Hitechcity",
+      "Hyderabad",
+      "Telangana",
+      "542004",
+      "91 9812287593",
+      "dinesh9@gmail.com"
+    );
+    AddContact(
+      "Pandu",
+      "Rangarao",
+      "Thane",
+      "Mumbai",
+      "Mumbai",
+      "561004",
+      "91 9854280202",
+      "pandui11@gmail.com"
+    );
+    
+  
+  AddressBook.forEach((contact) => console.log(contact.toString()));
+  // UC4 
+  AddressBook.filter(contact => contact.firstName == "Bala" && contact.lastName == "Chandar").forEach(contact =>{ contact.address = "RajajiNagar"; contact.city = "Banagalore";})
+  AddressBook.forEach(contact=>console.log(contact.toString()));
+  // UC5 
+  console.log("Deletes the contact from AddressBook Array.");
+  
+  DeleteContact("Bala", "Chandar");
+  AddressBook.forEach(contact=>console.log(contact.toString()));
+}
+Main();
