@@ -132,6 +132,16 @@ function SearchByState(state) {
     let sortByState = AddressBook.filter(contact => contact.state == state);
     return sortByState;
 }
+// UC9 Displays Contact By City.
+function ViewContactByCity(){
+    AddressBook.filter((contact) => contactsCityMap.set(contact.city, SearchByCity(contact.city)));
+    return contactsCityMap;
+}
+// UC9 Displays Contact By State.
+function ViewContactByState(){
+    AddressBook.filter((contact) => contactsStateMap.set(contact.state, SearchByState(contact.state)));
+    return contactsStateMap;
+}
 
 function Main() {
 
@@ -176,12 +186,19 @@ function Main() {
   
   DeleteContact("Bala", "Chandar");
   AddressBook.forEach(contact=>console.log(contact.toString()));
-
-  // UC8 Prints Contact by city.
-  console.log(SearchByCity("Mumbai"));
-  // UC8 Prints Contact by state.
-  console.log(SearchByState("Telangana"));
-
+// UC8 Prints Contact by city.
+console.log(SearchByCity("Mumbai"));
+// UC8 Prints Contact by state.
+console.log(SearchByState("Telangana"));
+console.log("---- UC9 ViewsContacts By City----");
+console.log(ViewContactByCity());
+console.log("---- UC9 ViewsContacts By State----");
+console.log(ViewContactByState());
 }
+// Map to Contacts in a city.
+let contactsCityMap = new Map();
+// Map to Contacts in a state.
+let contactsStateMap = new Map();
+
 Main();
 CountContact();
