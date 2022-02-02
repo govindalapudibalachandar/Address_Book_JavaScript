@@ -95,7 +95,13 @@ let AddressBook = new Array();
 function AddContact(firstName, lastName, address, city, state, zip, phoneNumber, email) {
     try {
         let newcontact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
-        AddressBook.push(newcontact);
+        // UC7 Checks for Duplicate contacts.
+        if (AddressBook.find(person => person.firstName == newcontact.firstName && person.email == newcontact.email)) {
+            throw "Contact Already Exists.";
+        } else {
+            AddressBook.push(newcontact);
+            console.log("Contact Added Successfully.");
+        }
     }
     catch (e) {
         console.error(e);
